@@ -13,10 +13,11 @@ public class MessageController {
 
 	@Autowired
 	private MessageProducer messageProducer;
-	
+
 	@GetMapping("akash/publish")
 	public ResponseEntity<String> sendMessage(@RequestParam("message") String message) {
 		messageProducer.sendMessage(message);
+		messageProducer.sendMessage1(message);
 		return ResponseEntity.ok("Message sent to RabbitMQ");
 	}
 }
